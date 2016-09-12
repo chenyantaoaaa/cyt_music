@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html>  
+ <head>  
+ <title> scores </title>  
+ 
+ </head>  
+ <body onload="showvalf()">  
+  	<div id="imgDiv">
+  	</div>
+ </body>
+  <script>    
+  var thisURL = document.URL;    
+  var  getval =thisURL.split('?')[1];  
+  var showval= getval.split("=")[1]; 
+  var imgs=showval.split(";");
+  
+  
+  var div=document.getElementById('imgDiv');
+  function  showvalf(){ 
+	  for(var key in imgs){   
+		  div.innerHTML+=("<img src='/pic/picture/"+imgs[key]+"'"+"/>");
+	  } 
+  }  
+</script>   
+</html> 

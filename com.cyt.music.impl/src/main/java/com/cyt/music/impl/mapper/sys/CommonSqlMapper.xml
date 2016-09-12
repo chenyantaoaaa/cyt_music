@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyt.music.impl.mapper.sys.CommonSqlMapper" >
+	<!-- MySql分页尾 -->
+	<sql id="page_end">
+		<if test="pageInfo!=null">
+		LIMIT ${pageInfo.PageInfo_start},${pageInfo.PageInfo_pageSize}
+		</if>
+ 	</sql>
+</mapper>

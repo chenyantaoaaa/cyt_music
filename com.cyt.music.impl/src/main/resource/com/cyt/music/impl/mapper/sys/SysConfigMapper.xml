@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyt.music.impl.mapper.sys.SysConfigMapper" >
+  <select id="queryMysqlDate"  resultType="java.util.Date">
+ 	select SYSDATE() from DUAL 
+  </select>
+  <select id="getMaxCount" parameterType="java.lang.Integer" resultType="java.lang.Long">
+ 	select sn_get(#{counterNo}); 
+  </select>
+</mapper>

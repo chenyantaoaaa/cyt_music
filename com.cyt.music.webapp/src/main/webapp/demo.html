@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#username{
+				
+			}
+			#userstatus{
+			
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+		<meta charset="UTF-8">
+		<title></title>
+	<script>
+		function demoQuery(){
+				$.ajax({
+					type:'post',
+					url:'http://localhost:8080/web/demo/requestJson.action',
+					contentType:'application/json;charset=utf-8',
+					//数据格式是json串，商品信息
+					data:JSON.stringify([{username:"chen",userstatus:"2"},{username:"chen2",userstatus:"3"}]),
+					success:function(data){//返回json结果
+						console.log(data);
+						console.log(data[0].username);
+						console.log($("input[name='username']"));
+						
+						$("input[name='username']").val(data[0].username);
+						$("input[name='userstatus']").val(data[0].userstatus);
+				}});
+		}
+		
+	</script>
+	</head>
+	<body>
+		<br>用户姓名<input type="text" name="username" id="username" value=""/></br>
+		<br>用户状态<input type="text" name="userstatus" id="userstatus" value="" /></br>
+		<br><input type="button" name="btn" id="btn" value="取到数据" onclick="demoQuery()"/></br>
+	</body>
+</html>

@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Music+ 我的音乐盒</title>
+    <meta name="keywords" content="音乐盒">
+	<meta name="description" content="TaoShao的专属音乐盒。">
+    <meta name="author" content="TaoShao">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<link rel="icon" href="http://xiguabaobao.com/favicon.ico">
+    <link rel="shortcut icon" href="http://xiguabaobao.com/favicon.ico">
+	<link rel="stylesheet" href="../../css/music.css">
+</head>
+<body>
+    <div class="container">
+        <div id="left-side">
+            <div class="list">
+                歌单列表
+            </div>
+        </div><!-- / left-side -->
+
+        <div id="main">
+
+            <div class="progress"></div>
+        
+            <span class="progress current"></span>
+
+            <!--TODO: <a href="javascript:void(0)" id="left-open">Left</a> -->
+            
+            <!--TODO: <a href="javascript:void(0)" id="close">Close</a> -->
+
+            <div class="content">
+
+                <div id="divider"></div>
+
+                <div class="player">
+                    
+                    <div class="cover">
+                        <div id="playCtl">
+                            <a href="javascript:void(0)" class="playCtl play"></a>
+                        </div>
+                    </div>
+
+                    <div id="cover-pic" class="cover-pic">
+                        <!-- TODO：将图片插入img方便调整大小，而不用background。 DONE：已完成-->
+                        <img src="" alt="">
+                    </div>
+
+                    <audio id="audio" src="" preload="auto">
+                        <!-- <source src="audio/audio.ogg" type="audio/ogg"> -->
+                        <!-- <source src="audio/audio.mp3" type="audio/mpeg"> -->
+                        <!-- <source src="audio/audio.wav"> -->
+                        您的浏览器不支持HTML5,请升级您的浏览器。
+                    </audio>
+                    
+                    <div class="controls">
+                        <div class="btn loveBg"><a href="javascript:void(0)" class="btn love"></a></div>
+                        <div class="btn hateBg"><a href="javascript:void(0)" class="btn hate"></a></div>
+                        <div class="btn repeatBg"><a href="javascript:void(0)" class="btn repeat"></a></div>
+                        <div class="btn nextBg"><a href="javascript:void(0)" class="btn next"></a></div>
+                    </div><!-- / controls -->
+
+                </div><!-- / player -->
+
+                <p id="title">
+
+                    <!-- TODO: 这里面的默认文字不要随意更改 -->
+                    <span>正在为您准备歌曲...</span>
+
+                    <!--TODO: <a href="javascript:void(0)">分享按钮</a> -->
+
+                </p><!-- / title -->
+
+                <!--TODO: <div id="loading"></div> -->
+
+            </div><!-- / content -->
+
+            <!-- TODO: 加入搜索功能 目前缺少曲库API-->
+            <!-- TODO: 标签tags搜索功能 -->
+            <div id="searchTip">
+                搜索功能还没有完成。试试
+                <span><a href="javascript:void(0)" id="openGallery"> 音乐画廊</a></span>
+            </div><!-- / searchTip -->
+
+            <div id="gallery">
+                <!-- <div class="item">
+                    <img src="audio/PoppyChen/cv.jpg" data-original="audio/PoppyChen/Liu li yue.jpg" alt="">
+                    <div class="gPlayCtl">
+                        <div class="intro">
+                            <div class="artist"><span>Artist</span>杨幂</div>
+                            <div class="title">琉璃月</div>
+                        </div>
+                        <a class="gPlay" href="javascript:void(0)"></a>
+                    </div>
+                </div> -->
+            </div><!-- / gallery -->
+
+
+            <!-- TODO: 在下面加入SEO描述 -->
+            <div id="notify">西瓜宝宝网</div>
+
+            <div id="footer">
+                <!--TODO: <a href="javascript:void(0)"><img src="#" alt="logo"></a> -->
+
+                <div id="search">
+                    <input id="searchInput" type="text" placeholder="作者很懒~">
+                </div>
+                
+                <div id="galleryTip">
+                    你正在使用音乐画廊
+                    <a href="javascript:void(0)" id="closeGallery"> 退出</a>
+                </div>
+
+                <!--TODO: <a href="javascript:void(0)" id="right-open">right</a> -->
+
+            </div><!-- / footer -->
+
+        </div><!-- / main -->
+
+        <div id="right-side">
+            <div class="user-center">
+                个人信息
+            </div>
+        </div><!-- / right-side -->
+
+    </div><!-- / container-->
+	
+	<!-- 将script放置在文档末尾，加快文档加载的速度 -->
+	<script src="../../js/jquery-1.9.1.min.js"></script>
+    <script src="../../js/jquery.lazyload.js"></script>
+	<script src="../../js/music.js"></script>
+	<script src="../../js/ga.js"></script>
+	
+</body>
+</html>

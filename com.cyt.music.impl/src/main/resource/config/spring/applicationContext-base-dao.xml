@@ -1,0 +1,60 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+
+
+	<!-- 加载系统配置文件 -->
+	<context:property-placeholder location="classpath:config/database.properties" />
+
+
+	<!-- 数据源 -->
+	<bean id="dsBbs" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="maxIdle" value="${jdbc.maxIdle}" />
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+		<property name="defaultAutoCommit" value="${jdbc.defaultAutoCommit}" />
+		<property name="removeAbandoned" value="${jdbc.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}" />
+	</bean>
+
+<!-- 配置SqlSessionFactory
+从spring和mybatis的整合包中获取
+ -->
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!-- 加载数据源 -->
+    <property name="dataSource" ref="dsBbs"/>
+    <!-- 配置SqlMapConfig.xml -->
+    <!-- <property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/> -->
+</bean>
+
+<!-- spring扫描logic层 配置后可自动注入 -->
+<context:component-scan base-package="com.cyt.music.impl.logic"/>
+<!--配置 mapper自动扫描器
+ bean名称就是mapper类型（首字母小写）
+ -->
+
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+   <!-- 如果要扫描多个包中间用逗号或者分号分隔，可以使用通配符-->
+   <property name="basePackage" value="com.cyt.music.impl.mapper"/>
+    <!-- 配置SqlSessionFactory -->
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+</bean>
+
+
+</beans>

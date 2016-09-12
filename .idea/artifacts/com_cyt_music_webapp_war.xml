@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="com.cyt.music.webapp:war">
+    <output-path>$PROJECT_DIR$/com.cyt.music.webapp/target</output-path>
+    <root id="archive" name="com.cyt.music.webapp-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="com.cyt.music.webapp:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,213 @@
+/* Table of Content
+==================================================
+    #Reset & Basics
+    #Basic Styles
+    #Typography
+    #Links
+    #Lists
+    #Images
+    #Buttons
+    #Forms
+    #Misc 
+    #Site Styles
+    #Media Queries */
+
+
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline; }
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+        display: block; }
+    body {
+        line-height: 1; }
+    ol, ul {
+        list-style: none; }
+    blockquote, q {
+        quotes: none; }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none; }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0; }
+
+
+/* #Basic Styles
+================================================== */
+    body {
+        background: #EFEFEF;
+        /*font: 14px/21px Helvetica, Arial, sans-serif;*/
+        font: normal 16px/1.5 Helvetica, "Microsoft Yahei", Arial, sans-serif;
+        color: #444;
+        -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+        -webkit-text-size-adjust: 100%;
+    }
+    input {padding: 10px 15px;outline: 0;border:0;border-radius: 3px;width: 200px;}
+    
+
+/* #Typography
+================================================== */
+    h1, h2, h3, h4, h5, h6 { color: #181818;}
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+    h1 { font-size: 46px; line-height: 50px; margin-bottom: 14px;}
+    h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
+    h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
+    h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
+    h5 { font-size: 17px; line-height: 24px; }
+    h6 { font-size: 14px; line-height: 21px; }
+    .subheader { color: #777; }
+
+    em { font-style: italic; }
+    strong { font-weight: bold; color: #333; }
+    small { font-size: 80%; }
+
+    hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
+
+
+/* #Links
+================================================== */
+    a, a:visited { color: #333; text-decoration: none; outline: 0; }
+    a:hover, a:focus { color: #000;}
+
+
+/* #Lists
+================================================== */
+    li { display: block; float: left;}
+
+
+/* #Images
+================================================== */
+    img { 
+        max-width: 100%;
+        height: auto; 
+        width: auto\9; /*ie8*/
+    }
+
+
+/* #Buttons
+================================================== */
+
+
+/* #Forms
+================================================== */
+
+
+/* #Misc
+================================================== */
+    .clearfix {clear: both !important;}
+    .centered {text-align: center !important;}
+    .left {float: left !important;}
+    .right {float: right !important;}
+
+
+/* #Site Styles
+================================================== */
+    /*.top-bar {font-size:11px;text-align:center;text-transform:uppercase;position:static;line-height: 24px;background-color:rgba(255,255,255,0.5); box-shadow: 1px 0 2px rgba(0,0,0,0.2);}
+    .top-bar a {padding:0 10px;display:inline-block;letter-spacing:1px;}*/
+    input[type='button']{cursor:pointer;}
+    body{overflow:hidden;}
+    .container{float:left; position:relative; width:100%; height:100%;}
+    
+    #left-side{background:url(../img/music/leftBg.jpg) repeat; display:none; float:left; width:400px; height:100%; position:relative;}
+    #left-side .list{width:400px; height:100%;}
+    
+    #main {background:url(../img/music/bg.jpg) repeat; float:left; width:auto; height:100%; overflow:hidden; position:relative; box-shadow:0px 0 10px rgba(0,0,0,.5); z-index:1;}
+    #main .progress{width:100%; height:3px; background-color:#D6D6D6; position:absolute;top:0;left:0;z-index:4;}
+    #main .current{width:0%;background-color:#555;}
+    #main #left-open{width:30px; height:30px; position:absolute; top:25px; left:28px; z-index:3;}
+    #main #close{width:30px; height:30px; position:absolute; top:25px; right:28px; z-index:3;}
+
+    #main .content #divider{width:100%; height:1px; background-color:#B6B6B6; position:absolute; top:50%; margin-top:-38px; border-top:1px solid #E6E6E6;} 
+    
+    #main .content .player .cover{width:430px; height:430px; position:absolute; top:50%; left:50%; margin-top:-270px; margin-left:-215px; z-index:999; background:url(../img/music/playerMask.png) no-repeat;}
+    #main .content .player .cover #playCtl{width:69px; height:69px; position:absolute; top:50%; left:50%; margin-top:-39px; margin-left:-35px; z-index:3; background:url(../img/music/playCtl.png) no-repeat -200px 0;}
+    #main .content .player .cover #playCtl .playCtl{width:69px; height:69px; position:absolute; top:50%; left:50%; margin-top:-35px; margin-left:-35px; z-index:4; background:url(../img/music/playCtl.png) no-repeat; display:block;}
+    #main .content .player .cover #playCtl .play{background-position:0 0;}
+    #main .content .player .cover #playCtl .pause{background-position:-100px 0;}
+    
+    #main .content .player .cover-pic{width:300px; height:300px; position:absolute; top:50%; left:50%; margin-top:-209px; margin-left:-150px; z-index:99; background-image:url(../img/music/cover_pic.jpg); background-repeat:no-repeat; -webkit-transition:-webkit-transform 20s ease-in-out; -moz-transition:-moz-transform 20s ease-in-out; transition:transform 20s ease-in-out;}
+    #main .content .player .cover-pic img{width:100%; height:100%; z-index:1; -webkit-transition:-webkit-transform 20s ease-in-out; -moz-transition:-moz-transform 20s ease-in-out; transition:transform 20s ease-in-out;}
+
+    #main .content .player .controls .btn{display:block;width:100px; height:100px; background:url(../img/music/playerIcons.png) no-repeat; background-position:-400px -100px; position:absolute; top:50%; margin-top:-88px; z-index:1000;}
+    #main .content .player .controls .loveBg{left:10%;}
+    #main .content .player .controls .hateBg{left:24%;}
+    #main .content .player .controls .repeatBg{right:24%;}
+    #main .content .player .controls .nextBg{right:10%;}
+    #main .content .player .controls .love{background-position:0 -100px; margin-top:-50px; -webkit-transition:-webkit-transform 3s ease-in-out; -moz-transition:-moz-transform 3s ease-in-out; transition:transform 3s ease-in-out;}
+    #main .content .player .controls .hate{background-position:-300px -100px; margin-top:-50px; -webkit-transition:-webkit-transform 5s ease-in-out; -moz-transition:-moz-transform 5s ease-in-out; transition:transform 5s ease-in-out;}
+    #main .content .player .controls .repeat{background-position:-100px -100px; margin-top:-50px; -webkit-transition:-webkit-transform 13s ease-in-out; -moz-transition:-moz-transform 13s ease-in-out; transition:transform 13s ease-in-out;}
+    #main .content .player .controls .next{background-position:-200px -100px; margin-top:-50px; -webkit-transition:-webkit-transform 15s ease-in-out; -moz-transition:-moz-transform 15s ease-in-out; transition:transform 15s ease-in-out;}
+    #main .content .player .controls .love:hover{background-position:0 0; margin-top:-50px;}
+    #main .content .player .controls .hate:hover{background-position:-300px 0; margin-top:-50px;}
+    #main .content .player .controls .repeat:hover{background-position:-100px 0; margin-top:-50px;}
+    #main .content .player .controls .next:hover{background-position:-200px 0; margin-top:-50px;}
+    #main .content .player .controls .love.hover{background-position:-400px 0; margin-top:-50px;}
+    #main .content .player .controls .hate.hover{background-position:-300px 0; margin-top:-50px;}
+    #main .content .player .controls .repeat.hover{background-position:-100px 0; margin-top:-50px;}
+    #main .content .player .rotate{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);transform:rotate(360deg);}
+    /*#main .content .player .rotateL{-webkit-transform:rotate(-360deg);}*/
+    /*#main .content .player .rotateR{-webkit-transform:rotate(360deg);}*/
+
+    #main .content #title{width:400px; position:absolute; left:50%; bottom:140px; margin-left:-200px; text-align:center; z-index:2; letter-spacing:1px;}
+    #main .content #loading{display:none; width:40px; height:40px; position:absolute; bottom:120px; left:50%; margin-left:-20px; background:url(../img/music/loading.gif) no-repeat;}
+
+    #main #searchTip{display:none; width:300px; position:relative; top:50%; margin:-50px auto 0 auto; text-align:center; font-weight:bold; color:rgba(0,0,0,.2);}
+    #main #searchTip a{color:#444;border-bottom:1px dashed #444;}
+
+    #main #gallery{display:none; width:100%; height:100%; position:absolute; left:0; bottom:75px; background-color:black; z-index:99999;}
+    #main #gallery .item{width:183px; height:183px; float:left; margin:3px 0 0 3px; opacity:0.5; position:relative;}
+    #main #gallery .item:hover{opacity:1;}
+    #main #gallery .item.hover{opacity:1;}/*閸︺劎鏁惧濠冩尡閺�鐐閿涘瞼鍋ｆ禍顔肩秼閸撳秵鐡曢弴锟�*/
+    #main #gallery .item img{width:100%; height:100%;}
+    #main #gallery .item .gPlayCtl{display:none; width:100%; height:67px; position:absolute; bottom:0; background:url(../img/music/gPlayCtl.png) repeat-x;}
+    #main #gallery .item .gPlayCtl .intro{display:block; float:left; height:auto; padding:16px 0 0 16px; color:white;}
+    #main #gallery .item .gPlayCtl .intro .artist{width:115px; font-size:12px; line-height:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+    #main #gallery .item .gPlayCtl .intro .artist span{color:#222; font-size:14px; font-weight:bold; padding-right:5px;}
+    #main #gallery .item .gPlayCtl .intro .title{width:130px; font-size:18px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+    #main #gallery .item .gPlayCtl .gPlay{display:block; float:left; width:34px; height:34px; position:absolute; right:16px; bottom:14px; background:url(../img/music/gPlayCtl.png) 0px -79px no-repeat;}
+    #main #gallery .item .gPlayCtl .gPause{display:block; float:left; width:34px; height:34px; position:absolute; right:16px; bottom:14px; background:url(../img/music/gPlayCtl.png) 0px -127px no-repeat;}
+
+    #main #notify{width:100%; height:0px; position:absolute; bottom:74px; background:url(../img/music/notifyBg.jpg) repeat-x; text-align:center; color:#DDD; line-height:75px;}
+    #main #notify a{color:#DDD;text-decoration:none;border-bottom:1px dashed #DDD;}
+
+    #main #footer{background:#1B1C20 url(../img/music/footerBg.jpg) repeat-x; width:100%; height:75px; position:absolute; bottom:0;}
+    #main #footer #search{width:330px; margin:0 auto; bottom:-18px; position:relative; text-align:center;}
+    #main #footer #galleryTip{width:330px; margin:0 auto; bottom:-78px; position:relative; text-align:center; font-size:12px; color:white;}
+    #main #footer #galleryTip a{color:#BFBFBF;}
+
+    #main #footer #right-open{width:30px; height:30px; position:absolute; right:20px; bottom:22px; color:#D6D6D6;}
+
+    #right-side{background-color:#FCFCFC; display:none; float:left; width:400px; height:100%; position:relative;}
+    #right-side .user-center{width:400px; height:638px;}
+
+
+
+/* #Media Queries
+================================================== */
+
+    /* Smaller than standard 960 (devices and browsers) */
+    @media only screen and (max-width: 959px) {
+        #main .content .player .controls .btn{
+            display:none;
+            visibility:hidden;
+        }
+    }
+
+    /* Tablet Portrait size to standard 960 (devices and browsers) */
+    @media only screen and (min-width: 768px) and (max-width: 959px) {}
+
+    /* All Mobile Sizes (devices and browser) */
+    @media only screen and (max-width: 767px) {}
+
+    /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+    @media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+    /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+    @media only screen and (max-width: 479px) {}

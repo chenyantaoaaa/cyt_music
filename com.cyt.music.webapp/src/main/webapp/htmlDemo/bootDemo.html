@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8"> 
+   <title>demoBoot</title>
+   <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">  
+   <script src="../js/jquery-1.9.1.min.js"></script>
+   <script src="../js/bootstrap.min.js"></script>
+   <script src="../js/bootstrap-table.js"></script>
+   <link href="../css/bootstrap-table.css" rel="stylesheet" type="text/css"> 
+</head>
+<body>
+	用户姓名<input type="text" id="username" name="username" value="ssss"/>
+            用户状态<input type="text" id="userstatus" name="userstatus" value="dddd"/>
+	<table class="table table-hover" id="cusTable"  
+       data-pagination="true"  
+       data-show-refresh="true"  
+       data-show-toggle="true"  
+       data-showColumns="true">  
+       <thead>  
+          <tr>    
+              <th  data-field="id" data-sortable="true">  
+                           用户id 
+              </th>                                                         
+              <th  data-field="username" data-sortable="true">  
+                           用户姓名 
+              </th>  
+              <th data-field="userstatus" >  
+                           用户状态  
+              </th>     
+       </thead>  
+       <tbody>  
+       </tbody>  
+</table>
+<script type="text/javascript">  
+function initTable() {  
+    var username=$("#username").val();
+    var userstatus=$("#userstatus").val();
+    //先销毁表格  
+    $('#cusTable').bootstrapTable('destroy');  
+    //初始化表格,动态从服务器加载数据  
+    $("#cusTable").bootstrapTable({  
+        method: "get",  //使用get请求到服务器获取数据  
+        url: "http://localhost:8080/web/demo/requestJson.action",
+        striped: true,  //表格显示条纹   
+        pagination: true, //启动分页  
+        pageList: [5, 10, 15, 20, 25],  //记录数可选列表  
+        search: false,  //是否启用查询  
+        showColumns: true,  //显示下拉框勾选要显示的列  
+        showRefresh: true,  //显示刷新按钮  
+        sidePagination: "server", //设置为服务器端分页  
+        //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
+        //设置为limit可以获取limit, offset, search, sort, order  
+        queryParamsType :'limit',   
+        queryParams: queryParams,  
+        onLoadSuccess: function(data){  //加载成功时执行  
+ 
+        },  
+        onLoadError: function(){  //加载失败时执行  
+        	/* alert("加载数据失败", {time : 1500, icon : 2}); */  
+        }
+      });  
+  }   
+  
+function queryParams(params) {  //配置参数
+    var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+      pageSize: params.limit,   //页面大小
+      pageNumber: params.offset,  //页码
+      username: $("#username").val(),
+      userstatus: $("#userstatus").val(),
+    };
+    return temp;
+  }
+  
+  $(document).ready(function () {          
+      //调用函数，初始化表格  
+      initTable();  
+
+      //当点击查询按钮的时候执行  
+      $("#search").bind("click", initTable);  
+  }); 
+</script>  
+</body>
+<script>
+
+</script>
+</html>

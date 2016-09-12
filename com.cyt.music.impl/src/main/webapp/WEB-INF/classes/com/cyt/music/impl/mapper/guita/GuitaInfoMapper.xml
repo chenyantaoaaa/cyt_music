@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyt.music.impl.mapper.guita.GuitaInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cyt.music.interfaces.pojo.guita.GuitaInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="score_name" property="scoreName" jdbcType="VARCHAR" />
+    <result column="score_image" property="scoreImage" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="tune" property="tune" jdbcType="VARCHAR" />
+    <result column="difficulty" property="difficulty" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
+    <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, score_name, score_image, type, tune, difficulty, author, reserve, reserve1, reserve2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from guita_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from guita_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from guita_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfoExample" >
+    delete from guita_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfo" >
+    insert into guita_info (id, score_name, score_image, 
+      type, tune, difficulty, 
+      author, reserve, reserve1, 
+      reserve2)
+    values (#{id,jdbcType=INTEGER}, #{scoreName,jdbcType=VARCHAR}, #{scoreImage,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{tune,jdbcType=VARCHAR}, #{difficulty,jdbcType=VARCHAR}, 
+      #{author,jdbcType=VARCHAR}, #{reserve,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, 
+      #{reserve2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfo" >
+    insert into guita_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="scoreName != null" >
+        score_name,
+      </if>
+      <if test="scoreImage != null" >
+        score_image,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="tune != null" >
+        tune,
+      </if>
+      <if test="difficulty != null" >
+        difficulty,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
+      <if test="reserve1 != null" >
+        reserve1,
+      </if>
+      <if test="reserve2 != null" >
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="scoreName != null" >
+        #{scoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreImage != null" >
+        #{scoreImage,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="tune != null" >
+        #{tune,jdbcType=VARCHAR},
+      </if>
+      <if test="difficulty != null" >
+        #{difficulty,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfoExample" resultType="java.lang.Integer" >
+    select count(*) from guita_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update guita_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.scoreName != null" >
+        score_name = #{record.scoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scoreImage != null" >
+        score_image = #{record.scoreImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tune != null" >
+        tune = #{record.tune,jdbcType=VARCHAR},
+      </if>
+      <if test="record.difficulty != null" >
+        difficulty = #{record.difficulty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.author != null" >
+        author = #{record.author,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve != null" >
+        reserve = #{record.reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve1 != null" >
+        reserve1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+        reserve2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update guita_info
+    set id = #{record.id,jdbcType=INTEGER},
+      score_name = #{record.scoreName,jdbcType=VARCHAR},
+      score_image = #{record.scoreImage,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      tune = #{record.tune,jdbcType=VARCHAR},
+      difficulty = #{record.difficulty,jdbcType=VARCHAR},
+      author = #{record.author,jdbcType=VARCHAR},
+      reserve = #{record.reserve,jdbcType=VARCHAR},
+      reserve1 = #{record.reserve1,jdbcType=VARCHAR},
+      reserve2 = #{record.reserve2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfo" >
+    update guita_info
+    <set >
+      <if test="scoreName != null" >
+        score_name = #{scoreName,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreImage != null" >
+        score_image = #{scoreImage,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="tune != null" >
+        tune = #{tune,jdbcType=VARCHAR},
+      </if>
+      <if test="difficulty != null" >
+        difficulty = #{difficulty,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null" >
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfo" >
+    update guita_info
+    set score_name = #{scoreName,jdbcType=VARCHAR},
+      score_image = #{scoreImage,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      tune = #{tune,jdbcType=VARCHAR},
+      difficulty = #{difficulty,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="queryGuitaInfo" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfo" resultType="com.cyt.music.interfaces.pojo.guita.GuitaInfo">
+  		SELECT  t.author,
+				t.id,
+				t.difficulty,
+				t.score_image as scoreImage,
+				t.score_name as scoreName,	
+				t.tune,
+				t.type
+		FROM
+			guita_info t
+		<where>
+   			<if test="scoreName!=null and scoreName!=''">
+   				t.score_name LIKE '%${scoreName}%'   				
+   			</if>
+  		</where>
+  		<!-- 分页尾部 -->
+		<include refid="com.cyt.music.impl.mapper.sys.CommonSqlMapper.page_end" />	
+  </select>
+  <select id="queryGuitaInfoCount" parameterType="com.cyt.music.interfaces.pojo.guita.GuitaInfo" resultType="java.lang.Integer">
+  		SELECT COUNT(*)FROM (SELECT  t.author,
+				t.id,
+				t.difficulty,
+				t.score_image as scoreImage,
+				t.score_name as scoreName,
+				t.tune,
+				t.type
+		FROM
+			guita_info t
+		<where>
+   			<if test="scoreName!=null and scoreName!=''">
+   				t.score_name LIKE '%${scoreName}%'   				
+   			</if>
+  		</where>
+  		)t
+  </select>
+</mapper>
