@@ -10,6 +10,7 @@
     <module>com.cyt.music.common</module>
     <module>com.cyt.music.impl</module>
     <module>com.cyt.music.interfaces</module>
+    <module>com.cyt.music.webapp</module>
   </modules>
   
   <properties>

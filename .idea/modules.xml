@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../SpliderDemo/SpliderDemo.iml" filepath="$PROJECT_DIR$/../SpliderDemo/SpliderDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.iml" filepath="$PROJECT_DIR$/com.cyt.music.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.common/com.cyt.music.common.iml" filepath="$PROJECT_DIR$/com.cyt.music.common/com.cyt.music.common.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.impl/com.cyt.music.impl.iml" filepath="$PROJECT_DIR$/com.cyt.music.impl/com.cyt.music.impl.iml" />

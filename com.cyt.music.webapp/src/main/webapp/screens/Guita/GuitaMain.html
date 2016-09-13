@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../boot_plugins/Nivo-Slider-master/demo/style.css" type="text/css" media="screen" />
     <style>
 		.weather{ float: left; list-style: none; margin-left:8px;}
-		.btn { font: "微软雅黑";}
+		.btn { font-family:"微软雅黑";}
 		.section-heading { font-family:"微软雅黑"; font-style:italic;}
 		.lead { font-family:"微软雅黑";}
 		.table th, .table td { 
@@ -170,7 +170,7 @@
     //初始化表格,动态从服务器加载数据  
     $("#cusTable").bootstrapTable({  
         method: "get",  //使用get请求到服务器获取数据  
-        url: "http://localhost:8070/web/guita/queryGuitaInfo.action",
+        url: "http://localhost:8060/web/guita/queryGuitaInfo.action",
         striped: true,  //表格显示条纹   
         pagination: true, //启动分页  
         pageList: [5, 10, 15, 20, 25],  //记录数可选列表  
@@ -289,7 +289,7 @@
 	}
 
 	 //初始化fileinput
-	initFileInput("fileup", "http://localhost:8070/web/guita/addGuitaInfo.action");
+	initFileInput("fileup", "http://localhost:8060/web/guita/addGuitaInfo.action");
 	
 	$("#fileup").on('filebatchuploadsuccess', function(event, data, previewId, index) {
     	$('#addForm').find('input').each(function() {

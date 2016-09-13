@@ -34,7 +34,7 @@
     <![endif]-->
 	<style>
 		.weather{ float: left; list-style: none; margin-left:8px;}
-		.btn { font: "微软雅黑";}
+		.btn {  font-family: 微软雅黑}
 		.section-heading { font-family:"微软雅黑"; font-style:italic;}
 		.lead { font-family:"微软雅黑";}
 	</style>
@@ -133,7 +133,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">唯 爱 吉 他<br>旋律在心中流淌</h2>
-                    <p class="lead">多少次曾因生活的无奈想去流浪，多少次曾在这不眠的夜里，<a href="http://localhost:8070/web/screens/Guita/GuitaMain.html">拿起那把老吉他</a> ，轻轻的哼唱那，难忘的歌谣.</p>
+                    <p class="lead">多少次曾因生活的无奈想去流浪，多少次曾在这不眠的夜里，<a href="http://localhost:8060/web/screens/Guita/GuitaMain.html">拿起那把老吉他</a> ，轻轻的哼唱那，难忘的歌谣.</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="../../img/guita/mashushu.jpg" alt="">
@@ -155,7 +155,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">聆 听 歌 曲<br>享受那时而轻跃时而宁静的节奏</h2>
-                    <p class="lead">在我地盘这，你就得听我的。<a href="http://localhost:8070/web/screens/music/music.html">把音乐收割</a>，用听觉找快乐。开始在雕刻，我个人的特色。未来难预测坚持当下的选择。 </p>
+                    <p class="lead">在我地盘这，你就得听我的。<a href="http://localhost:8060/web/screens/music/music.html">把音乐收割</a>，用听觉找快乐。开始在雕刻，我个人的特色。未来难预测坚持当下的选择。 </p>
                 </div>
                 <div class="col-lg-4 col-sm-pull-6  col-sm-6">
                     <img class="img-responsive" src="../../img/music/qilixiang.jpg" alt="">
@@ -177,7 +177,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">fiction&movie<br>我爱的电影小说推荐</h2>
-                    <p class="lead">每部小说每部电影仿佛都带自己走入了<a href="http://localhost:8070/web/screens/recommoned/recomMain.html">另一个世界</a>去体会主角的喜怒哀乐和社会的形形色色</p>
+                    <p class="lead">每部小说每部电影仿佛都带自己走入了<a href="http://localhost:8060/web/screens/recommoned/recomMain.html">另一个世界</a>去体会主角的喜怒哀乐和社会的形形色色</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive" src="../../img/phones.png" alt="">
@@ -285,7 +285,7 @@
   	function getCurrentWeather(){
           $.ajax({
               type: "post",
-              url: "http://localhost:8070/web/home/weather.action",
+              url: "http://localhost:8060/web/home/weather.action",
               data:JSON.stringify({"cityname":$("#cityName").html()}), 
               contentType:'application/json;charset=utf-8',
               success: function(data) {

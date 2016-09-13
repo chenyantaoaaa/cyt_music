@@ -415,7 +415,7 @@ $(document).ready(function(){
 function loadRecords(){
   	 $.ajax({
          type: "post",
-         url: "http://localhost:8070/web/recommend/queryRecomInfo.action",
+         url: "http://localhost:8060/web/recommend/queryRecomInfo.action",
          contentType:'application/json;charset=utf-8', 
          success: function(data) {
         	 for(var i=0; i<data.length; i++)  

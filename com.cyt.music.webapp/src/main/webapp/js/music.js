@@ -31,7 +31,7 @@ function closeNotify() {
 }
 
 function readyPlay(t, e) {
-	var i = "http://localhost:8070/web/music/queryMusicInfo.action";
+	var i = "http://localhost:8060/web/music/queryMusicInfo.action";
 	$.getJSON(i, function(i) {
 		var a = null,
 			n = null;
@@ -63,7 +63,7 @@ function gallery() {
 	var t = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight,
 		e = Math.floor((t - 75 - 12) / 3),
 		i = e,
-		a = "http://localhost:8070/web/music/queryMusicInfo.action";
+		a = "http://localhost:8060/web/music/queryMusicInfo.action";
 	$.getJSON(a, function(t) {
 		var a = null,
 			n = t.musics.length;
