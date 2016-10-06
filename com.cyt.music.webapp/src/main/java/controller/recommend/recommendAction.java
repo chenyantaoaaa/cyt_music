@@ -1,39 +1,63 @@
 package controller.recommend;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.cyt.music.interfaces.pojo.common.PageResultForBootstrap;
+import com.cyt.music.interfaces.pojo.recommond.RecommondInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import service.recommond.RecommonInfoService;
 
-import com.cyt.music.interfaces.pojo.music.MusicInfo;
-import com.cyt.music.interfaces.pojo.music.MusicResult;
+import java.io.File;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/recommend")
 public class recommendAction {
 
+	@Autowired
+	private RecommonInfoService recommonInfoService;
+
 	@RequestMapping(value = "/queryRecomInfo")
 	public @ResponseBody
-	List<MusicInfo> queryMusicInfo() throws Exception {
-		MusicInfo musicInfo1=new MusicInfo();
-		musicInfo1.setAuthor("周杰伦");
-		musicInfo1.setTitle("告白气球");
-		musicInfo1.setImage("/pic/picture/d91e083b-7f5a-4d26-896e-fff1ef7363bc.png");
-		musicInfo1.setUrl("/pic/music/11.mp3");
-		
-		MusicInfo musicInfo2=new MusicInfo();
-		musicInfo2.setAuthor("周杰伦1");
-		musicInfo2.setTitle("告白气球1");
-		musicInfo2.setImage("/pic/picture/a0c72ebd-0462-4a4b-ae27-e79724dad49c.jpg");
-		musicInfo2.setUrl("/pic/music/12.mp3");
-		List<MusicInfo> musics=new ArrayList<MusicInfo>();
-		for (int i = 0; i <40; i++) {
-			musics.add(musicInfo1);
-		}		
-		musics.add(musicInfo2);
-		
-		return musics;
+	List<RecommondInfo> queryMusicInfo(@RequestBody RecommondInfo  recommondInfo) throws Exception {
+		List<RecommondInfo> list=recommonInfoService.queryRecommonInfo(recommondInfo);
+		return list;
+	}
+
+	@RequestMapping(value = "/addRecomInfo")
+	public @ResponseBody PageResultForBootstrap  addRecomInfo(RecommondInfo  recommondInfo,@RequestParam("fileup[]") MultipartFile[] files) throws Exception {
+		StringBuilder recomImages = new StringBuilder("");
+		if (files != null && files.length > 0) {
+			// 循环获取file数组中得文件
+			for (MultipartFile recom_image : files) {
+				String originalFilename = recom_image.getOriginalFilename();
+				if (recom_image != null && originalFilename != null
+						&& originalFilename.length() > 0) {
+					// //存放图片的物理路径
+					String pic_path = "F:\\upload\\recommond_pic\\";
+					String newFileName = UUID.randomUUID()
+							+ originalFilename.substring(originalFilename
+							.lastIndexOf("."));
+					File newFile = new File(pic_path + newFileName);
+					recom_image.transferTo(newFile);
+					recomImages.append(newFileName).append(";");
+				}
+			}
+		}
+		if (!recomImages.equals("")) {
+			String recomImage = recomImages.toString().substring(0,
+					recomImages.length() - 1);
+			System.err.println(recomImage);
+			recommondInfo.setImage(recomImage);
+		}
+
+		int i=recommonInfoService.addRecomInfo(recommondInfo);
+		PageResultForBootstrap pageResultForBootstrap = new PageResultForBootstrap();
+		return pageResultForBootstrap;
 	}
 }

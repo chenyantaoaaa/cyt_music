@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        body {
+            font-family: 微软雅黑;
+        }
+    </style>
+    <link href="../../css/comment.css" rel="stylesheet">
+    <script type="text/javascript" src="../../js/comment.js"></script>
+    <script type="text/javascript" src="../../js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div id="list">
+    <div id="city" style="display: none"></div>
+</div>
+<script>
+    $(document).ready(function () {
+        loadTopics();
+        getCurrentCity();
+    });
+
+    function loadTopics(){
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8060/web/comment/queryTopicComInfo.action",
+            contentType:'application/json;charset=utf-8',
+            success: function(data) {
+                for(var  i=0;i<data.length;i++){
+                    var admire=data[i].topicInfo.admiration;
+                    if(admire==null){
+                        admire=0;
+                    }
+                    var topicDateStr=data[i].topicInfo.inputDate.toString();
+                    var topicdate=topicDateStr.substring(0,4)+"-"+topicDateStr.substring(4,6)+"-"+topicDateStr.substring(6,8);
+                    var topicTimeStr=data[i].topicInfo.inputTime.toString();
+                    if(topicTimeStr.length==5){
+                        topicTimeStr="0"+topicTimeStr;
+                    }
+                    var topictime=topicTimeStr.substring(0,2)+":"+topicTimeStr.substring(2,4);
+
+                    var $comment="";
+                    for(var j=0;j<data[i].commentInfoList.length;j++){
+                        var commentDateStr=data[i].commentInfoList[j].inputDate.toString();
+                        var commentdate=commentDateStr.substring(0,4)+"-"+commentDateStr.substring(4,6)+"-"+commentDateStr.substring(6,8);
+                        var commentTimeStr=data[i].commentInfoList[j].inputTime.toString();
+                        if(commentTimeStr.length==5){
+                            commentTimeStr="0"+commentTimeStr;
+                        }
+                        var commenttime=commentTimeStr.substring(0,2)+":"+commentTimeStr.substring(2,4);
+
+                        $comment+="<div class='comment-box clearfix' user='self'>"+
+                                                        "<img class='myhead' src="+data[i].commentInfoList[j].headImage+" alt=''/>"+
+                                                        "<div class='comment-content'>"+
+                                                                "<p class='comment-text'><span class='userC'>"+data[i].commentInfoList[j].name+"：</span>"+data[i].commentInfoList[j].text+"</p>"+
+                                                                "<p class='comment-time'>"+
+                                                                    commentdate+" "+commenttime+
+                                                                "</p>"+
+                                                        "</div>"+
+                                             "</div>";
+//                        +data[i].commentInfoList[0].admiration
+                    }
+                    var $imagecontent="";
+                    if(data[i].topicInfo.bodyImage!=null){
+                        $imagecontent="<img class='pic' src="+data[i].topicInfo.bodyImage+" alt''/>";
+                    }
+
+
+                    var $content=$("<div class='box clearfix'>"+
+                                                     "<div  class='mark' id='mark' style='display: none'>"+data[i].topicInfo.id+"</div>"+
+                                                     "<a class='close'>×</a>"+
+                                                     "<img class='head' src="+data[i].topicInfo.headImage+" alt=''/>"+
+                                                     "<div class='content'>"+
+                                                     "<div class='main'>"+
+                                                         "<p class='txt'>"+
+                                                                "<span class='user'>"+data[i].topicInfo.name+"：</span><span class='mainText'>"+data[i].topicInfo.text+"</span>"+
+                                                         "</p>"+
+                                                         $imagecontent+
+                                                     "</div>"+
+                                                     "<div class='info clearfix'>"+
+                                                         "<span class='time'>"+topicdate+"  "+topictime+"</span>"+
+                                                         "<a class='praise'>赞</a>"+
+                                                     "</div>"+
+                                                     "<div class='praises-total'>"+admire+"个人觉得很赞</div>"+
+                                                     "<div class='comment-list'>"+
+                                                            $comment+
+                                                     "</div>"+
+                                                            "<div class='text-box'>"+
+                                                                "<textarea class='comment' autocomplete='off'>评论…</textarea>"+
+                                                                "<button class='btn '>回 复</button>"+
+                                                                "<span class='word'><span class='length'>0</span>/140</span>"+
+                                                            "</div>"+
+                                                         "</div>"+
+                                                    "</div>"
+                );
+                    $('#list').append( $content );
+                }
+            }
+        });
+    }
+
+//    点赞功能
+    $("div").delegate(".praise","click",function () {
+        var flag = $(this).parent().parent().parent().children("#mark").text();
+        var thisD=$(this);
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8060/web/comment/praiseTopic.action",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify({"flag": flag}),
+            success: function (data) {
+                thisD.parent().parent().children(".praises-total").text(data.admiration+"个人觉得很赞");
+            }
+            });
+        });
+
+        $("div").delegate(".close", "click", function () {
+            $(this).parent(".clearfix").remove();
+        })
+
+        $("div").delegate(".comment", "focus", function () {
+            this.parentNode.className = 'text-box text-box-on';
+            this.value = this.value == '评论…' ? '' : this.value;
+        });
+
+        //评论按键事件
+        $("div").delegate(".comment", "keyup", function () {
+            var val = this.value;
+            var len = val.length;
+            var els = this.parentNode.children;
+            var btn = els[1];
+            var word = els[2];
+            if (len <= 0 || len > 140) {
+                btn.className = 'btn btn-off';
+            }
+            else {
+                btn.className = 'btn';
+            }
+            word.innerHTML = len + '/140';
+        });
+
+//    发评论
+        $("div").delegate(".btn", "click", function () {
+            var textarea = $(this).parent().children(".comment")[0];
+            if (textarea.value == '' || textarea.value == "请输入要发送的内容") {
+                textarea.value = '请输入要发送的内容';
+                $(this).parent().children(".comment").css("color", "gray");
+                return false;
+            }
+
+            var thisD=$(this);
+            var topicId = $(this).parent().parent().parent().children("#mark").text();
+            var city=$("#city").html();
+            $.ajax({
+                    type: "post",
+                    url: "http://localhost:8060/web/comment/addComment.action",
+                    contentType: 'application/json;charset=utf-8',
+                data: JSON.stringify({topicId:topicId,name:city,text:textarea.value}),
+                    success: function (data) {
+                    }
+            });
+
+            var $content = $('<div class="comment-box clearfix" user="self">' + '<img class="myhead" src="/pic/comment_pic/youke.png" alt=""/>' +
+                    '<div class="comment-content">' +
+                    '<p class="comment-text"><span class="user">'+city+'网友：'+'</span>' + textarea.value + '</p>' +
+                    '<p class="comment-time">' +
+                    '</p>' +
+                    '</div>'
+                    + '</div>');
+                    $(this).parent().parent().children(".comment-list").append($content);
+            textarea.value = '';
+            loseFocus(textarea);
+
+        } );
+
+        //评论失去焦点
+        function loseFocus(area) {
+            var me = area;
+            var val = me.value;
+            if (val == '') {
+                timer = setTimeout(function () {
+                    me.value = '评论…';
+                    me.parentNode.className = 'text-box';
+                }, 200);
+            }
+        }
+
+    function getCurrentCity(){
+        $.ajax({
+            type: "get",
+            url: "http://webapi.amap.com/maps/ipLocation?key=608d75903d29ad471362f8c58c550daf",
+            dataType: 'text',
+            async:false,
+            success: function(data) {
+                //转换为JSON对象
+                var jsonObj = eval("(" + data.replace('(','').replace(')','').replace(';','') + ")");
+                //当前城市
+                $("#city").html(jsonObj.city);
+            }
+        });
+    };
+</script>
+</body>
+</html>

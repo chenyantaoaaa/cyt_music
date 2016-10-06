@@ -3,11 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../SpliderDemo/SpliderDemo.iml" filepath="$PROJECT_DIR$/../SpliderDemo/SpliderDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Thread/Thread.iml" filepath="$PROJECT_DIR$/../Thread/Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/com.cfae.ukey.iml" filepath="$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/com.cfae.ukey.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/com.cfae.ukey.cert/com.cfae.ukey.cert.iml" filepath="$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/com.cfae.ukey.cert/com.cfae.ukey.cert.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.iml" filepath="$PROJECT_DIR$/com.cyt.music.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.common/com.cyt.music.common.iml" filepath="$PROJECT_DIR$/com.cyt.music.common/com.cyt.music.common.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.impl/com.cyt.music.impl.iml" filepath="$PROJECT_DIR$/com.cyt.music.impl/com.cyt.music.impl.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.interfaces/com.cyt.music.interfaces.iml" filepath="$PROJECT_DIR$/com.cyt.music.interfaces/com.cyt.music.interfaces.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.cyt.music.webapp/com.cyt.music.webapp.iml" filepath="$PROJECT_DIR$/com.cyt.music.webapp/com.cyt.music.webapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../com.cyt.shiro/com.cyt.shiro.iml" filepath="$PROJECT_DIR$/../com.cyt.shiro/com.cyt.shiro.iml" />
     </modules>
   </component>
 </project>

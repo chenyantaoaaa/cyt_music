@@ -19,7 +19,7 @@
 
 
 	<!-- 数据源 -->
-	<bean id="dsBbs" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
@@ -38,7 +38,7 @@
  -->
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     <!-- 加载数据源 -->
-    <property name="dataSource" ref="dsBbs"/>
+    <property name="dataSource" ref="dataSource"/>
     <!-- 配置SqlMapConfig.xml -->
     <!-- <property name="configLocation" value="classpath:config/mybatis/sqlMapConfig.xml"/> -->
 </bean>

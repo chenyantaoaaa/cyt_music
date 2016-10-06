@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.cfae.ukey:com.cfae.ukey.cert:0.0.1-ra-toolkit">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/cfae/ukey/com.cfae.ukey.cert/0.0.1-ra-toolkit/com.cfae.ukey.cert-0.0.1-ra-toolkit.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/cfae/ukey/com.cfae.ukey.cert/0.0.1-ra-toolkit/com.cfae.ukey.cert-0.0.1-ra-toolkit-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/cfae/ukey/com.cfae.ukey.cert/0.0.1-ra-toolkit/com.cfae.ukey.cert-0.0.1-ra-toolkit-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

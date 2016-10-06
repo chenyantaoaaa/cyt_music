@@ -1,6 +1,8 @@
 package controller.demo;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 import service.user.demoService;
 
 import com.cyt.music.common.exception.BizException;
@@ -26,12 +30,12 @@ public class demoAction {
 	private demoService demoService;
 	
 	
-	@RequestMapping("/demoQuery")
+	@RequestMapping(value = "/demoQuery")
 	public  String demoQuery(Model model,UserInfo userInfo) throws Exception{
 //		testLog4j();
 		PageInfo pageInfo=new PageInfo();
 		pageInfo.setPageParams(11, 2, 3);
-		userInfo.setPageInfo(pageInfo);
+//		userInfo.setPageInfo(pageInfo);
 		List<UserInfo> UserList=demoService.demoQuery(userInfo);	
 		model.addAttribute("UserItems", UserList);
 		System.err.println(RunUtil.patchZero(Long.parseLong("1"), "000000"));

@@ -84,7 +84,7 @@ public class guitaInfoAction {
 			guitaInfo.setScoreImage(scoreImage);
 		}
 		
-//		guitaInfoService.addGuitaInfoCount(guitaInfo);
+		guitaInfoService.addGuitaInfoCount(guitaInfo);
 
 		PageResultForBootstrap pageResultForBootstrap = new PageResultForBootstrap();
 		return pageResultForBootstrap;

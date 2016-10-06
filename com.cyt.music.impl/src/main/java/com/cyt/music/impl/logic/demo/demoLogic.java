@@ -20,7 +20,8 @@ public class demoLogic {
 	private CommonLogic commonLogic;
 	
 	public List<UserInfo> demoQuery(UserInfo userInfo) throws Exception {
-		return userInfoMapper.demoTestQuery(userInfo);
+//		return userInfoMapper.demoTestQuery(userInfo);
+		return null;
 	}
 	
 	public UserInfo editDemo(Integer id) throws Exception {

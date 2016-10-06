@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cyt.music.impl.mapper.user.UserCustomMapper">
+
+  <resultMap id="BaseResultMap" type="com.cyt.music.interfaces.pojo.user.UserInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userStatus" property="userstatus" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleid" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="getByUserName" parameterType="String" resultMap="BaseResultMap">
+    select * from user_info where userName=#{userName}
+  </select>
+
+  <select id="getRoles" parameterType="String" resultType="String">
+    select r.roleName from user_info u,user_role r where u.roleId=r.id and u.userName=#{userName}
+  </select>
+
+  <select id="getPermissions" parameterType="String" resultType="String">
+    select p.permissionName from user_info u,user_role r,user_permission p where u.roleId=r.id and p.roleId=r.id and u.userName=#{userName}
+  </select>
+
+</mapper>

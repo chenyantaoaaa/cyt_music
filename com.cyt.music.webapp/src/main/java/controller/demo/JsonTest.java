@@ -47,7 +47,7 @@ public class JsonTest {
 		PageInfo pageInfo=new PageInfo();
 		pageInfo.setPageParams(11, pageSize, pageNumber);
 		UserInfo userInfo=new UserInfo();
-		userInfo.setPageInfo(pageInfo);
+//		userInfo.setPageInfo(pageInfo);
 		
 		List<UserInfo> UserList=demoService.demoQuery(userInfo);
 		PageResultForBootstrap pageResultForBootstrap=new PageResultForBootstrap();

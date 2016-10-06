@@ -317,7 +317,7 @@
 			z = gridImg.offsetWidth/this.originalImg.offsetWidth;
 
 		this.originalImg.style.WebkitTransform = 'translate3d(' + dx + 'px, ' + dy + 'px, 0) scale3d(' + z + ', ' + z + ', 1)';
-		this.originalImg.style.transform = 'translate3d(' + dx + 'px, ' + dy + 'px, 0) scale3d(' + z + ', ' + z + ', 1)';	
+		this.originalImg.style.transform = 'translate3d(' + dx + 'px, ' + dy + 'px, 0) scale3d(' + z + ', ' + z + ', 1)';
 		
 		// once that's done..
 		onEndTransition(this.originalImg, function() {
@@ -353,5 +353,4 @@
 	};
 
 	window.GridFx = GridFx;
-
 })(window);

@@ -59,7 +59,7 @@ public class WeatherUtil{
 //            URL url = new URL(  
 //                    "http://www.webxml.com.cn/WebServices/WeatherWS.asmx");  
             URL url = new URL(  
-                    "http://www.webxml.com.cn/WebServices/WeatherWebService.asmx");  
+                        "http://www.webxml.com.cn/WebServices/WeatherWebService.asmx");
             URLConnection conn = url.openConnection();  
             conn.setUseCaches(false);  
             conn.setDoInput(true);  
@@ -105,15 +105,22 @@ public class WeatherUtil{
             NodeList nl = doc.getElementsByTagName("string");  
             StringBuffer sb = new StringBuffer();  
             for (int count = 0; count < nl.getLength(); count++) {  
-                Node n = nl.item(count);  
-                if(n.getFirstChild().getNodeValue().equals("查询结果为空！")) {  
+                Node n = nl.item(count);
+                String ss=n.getFirstChild().getNodeValue();
+                if("访问被限制！".equals(n.getFirstChild().getNodeValue())) {
                     sb = new StringBuffer("#") ;  
                     break ;  
                 }  
                 sb.append(n.getFirstChild().getNodeValue() + "#");  
             }  
-            is.close();  
-            String [] strA={sb.toString().split("#")[6],sb.toString().split("#")[10]};
+            is.close();
+            String  strA  []=new String [5] ;
+            if(!sb.toString().equals("#")){
+                strA[0]=sb.toString().split("#")[6];
+                strA[1]=sb.toString().split("#")[10];
+            }else{
+                strA[0]="暂无天气数据";
+            }
             return strA ; 
         } catch (Exception e) {  
             e.printStackTrace();  

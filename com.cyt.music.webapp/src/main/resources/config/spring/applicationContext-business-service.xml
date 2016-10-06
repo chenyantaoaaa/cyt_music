@@ -15,4 +15,7 @@
 <!--<bean id="GuitaInfoService" class="com.cyt.music.impl.service.guita.GuitaInfoServiceImpl"/>-->
 <bean id="GuitaInfoService" class="com.cyt.music.impl.service.guita.GuitaInfoServiceImpl"/>
 <bean id="MusicInfoService" class="com.cyt.music.impl.service.music.MusicInfoServiceImpl"/>
+	<bean id="RecommonInfoService" class="com.cyt.music.impl.service.recommond.RecommonInfoServiceImpl"/>
+	<bean id="commentInfoService" class="com.cyt.music.impl.service.comment.CommentInfoServiceImpl"/>
+	<bean id="userService" class="com.cyt.music.impl.service.user.userServiceImpl"/>
 </beans>

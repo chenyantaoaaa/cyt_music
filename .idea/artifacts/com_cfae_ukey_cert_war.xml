@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="com.cfae.ukey.cert:war">
+    <output-path>$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/com.cfae.ukey.cert/target</output-path>
+    <root id="archive" name="com.cfae.ukey.cert-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="com.cfae.ukey.cert:war exploded" />
+    </root>
+  </artifact>
+</component>

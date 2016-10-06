@@ -66,9 +66,9 @@ public class DemoTest {
 //	@Test
 	public void test() throws IOException  {
 		UserInfo userInfo=new UserInfo();
-		List<UserInfo> userInfoList=userInfoMapper.demoTestQuery(userInfo);
-		System.out.println(userInfoList.get(0));
-		System.out.println(userInfoList.get(1));
+//		List<UserInfo> userInfoList=userInfoMapper.demoTestQuery(userInfo);
+//		System.out.println(userInfoList.get(0));
+//		System.out.println(userInfoList.get(1));
 	}
 	
 	@Test

@@ -4,13 +4,17 @@
     <entry_points version="2.0" />
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/com.cfae.ukey.cert" />
     <file type="web" url="file://$PROJECT_DIR$/com.cyt.music.webapp" />
+    <file type="web" url="file://$PROJECT_DIR$/../com.cyt.shiro" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/com.cyt.music.webapp/pom.xml" />
+        <option value="$PROJECT_DIR$/../com.cfae.ukey/com.cfae.ukey/pom.xml" />
+        <option value="$PROJECT_DIR$/../com.cyt.shiro/pom.xml" />
       </list>
     </option>
   </component>

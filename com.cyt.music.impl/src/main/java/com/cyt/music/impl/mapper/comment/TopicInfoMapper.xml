@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cyt.music.impl.mapper.comment.TopicInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cyt.music.interfaces.pojo.comment.TopicInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="head_image" property="headImage" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="text" property="text" jdbcType="VARCHAR" />
+    <result column="body_image" property="bodyImage" jdbcType="VARCHAR" />
+    <result column="admiration" property="admiration" jdbcType="INTEGER" />
+    <result column="input_date" property="inputDate" jdbcType="INTEGER" />
+    <result column="input_time" property="inputTime" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
+    <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
+    <result column="reserve2" property="reserve2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, head_image, name, text, body_image, admiration, input_date, input_time, remark, 
+    reserve, reserve1, reserve2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from topic_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topic_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topic_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfoExample" >
+    delete from topic_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfo" >
+    insert into topic_info (id, head_image, name, 
+      text, body_image, admiration, 
+      input_date, input_time, remark, 
+      reserve, reserve1, reserve2
+      )
+    values (#{id,jdbcType=INTEGER}, #{headImage,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{text,jdbcType=VARCHAR}, #{bodyImage,jdbcType=VARCHAR}, #{admiration,jdbcType=INTEGER}, 
+      #{inputDate,jdbcType=INTEGER}, #{inputTime,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{reserve,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}, #{reserve2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfo" >
+    insert into topic_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="headImage != null" >
+        head_image,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="text != null" >
+        text,
+      </if>
+      <if test="bodyImage != null" >
+        body_image,
+      </if>
+      <if test="admiration != null" >
+        admiration,
+      </if>
+      <if test="inputDate != null" >
+        input_date,
+      </if>
+      <if test="inputTime != null" >
+        input_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
+      <if test="reserve1 != null" >
+        reserve1,
+      </if>
+      <if test="reserve2 != null" >
+        reserve2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="headImage != null" >
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyImage != null" >
+        #{bodyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="admiration != null" >
+        #{admiration,jdbcType=INTEGER},
+      </if>
+      <if test="inputDate != null" >
+        #{inputDate,jdbcType=INTEGER},
+      </if>
+      <if test="inputTime != null" >
+        #{inputTime,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfoExample" resultType="java.lang.Integer" >
+    select count(*) from topic_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update topic_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.headImage != null" >
+        head_image = #{record.headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.text != null" >
+        text = #{record.text,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bodyImage != null" >
+        body_image = #{record.bodyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admiration != null" >
+        admiration = #{record.admiration,jdbcType=INTEGER},
+      </if>
+      <if test="record.inputDate != null" >
+        input_date = #{record.inputDate,jdbcType=INTEGER},
+      </if>
+      <if test="record.inputTime != null" >
+        input_time = #{record.inputTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve != null" >
+        reserve = #{record.reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve1 != null" >
+        reserve1 = #{record.reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserve2 != null" >
+        reserve2 = #{record.reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update topic_info
+    set id = #{record.id,jdbcType=INTEGER},
+      head_image = #{record.headImage,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      text = #{record.text,jdbcType=VARCHAR},
+      body_image = #{record.bodyImage,jdbcType=VARCHAR},
+      admiration = #{record.admiration,jdbcType=INTEGER},
+      input_date = #{record.inputDate,jdbcType=INTEGER},
+      input_time = #{record.inputTime,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      reserve = #{record.reserve,jdbcType=VARCHAR},
+      reserve1 = #{record.reserve1,jdbcType=VARCHAR},
+      reserve2 = #{record.reserve2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfo" >
+    update topic_info
+    <set >
+      <if test="headImage != null" >
+        head_image = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        text = #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="bodyImage != null" >
+        body_image = #{bodyImage,jdbcType=VARCHAR},
+      </if>
+      <if test="admiration != null" >
+        admiration = #{admiration,jdbcType=INTEGER},
+      </if>
+      <if test="inputDate != null" >
+        input_date = #{inputDate,jdbcType=INTEGER},
+      </if>
+      <if test="inputTime != null" >
+        input_time = #{inputTime,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null" >
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve2 != null" >
+        reserve2 = #{reserve2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cyt.music.interfaces.pojo.comment.TopicInfo" >
+    update topic_info
+    set head_image = #{headImage,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      text = #{text,jdbcType=VARCHAR},
+      body_image = #{bodyImage,jdbcType=VARCHAR},
+      admiration = #{admiration,jdbcType=INTEGER},
+      input_date = #{inputDate,jdbcType=INTEGER},
+      input_time = #{inputTime,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      reserve1 = #{reserve1,jdbcType=VARCHAR},
+      reserve2 = #{reserve2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="queryTopicInfo" resultType="com.cyt.music.interfaces.pojo.comment.TopicInfo">
+          SELECT  t.id,
+                        concat("../../img/",t.head_image) as headImage,
+                        t.name,
+                        t.text,
+                        concat("/pic/comment_pic/",t.body_image) as bodyImage,
+                        t.admiration,
+                        t.input_date as inputDate,
+                        t.input_time as inputTime,
+                        t.remark,
+                        t.reserve,
+                        t.reserve1,
+                        t.reserve2
+          FROM
+                        topic_info t
+  </select>
+</mapper>

@@ -3,17 +3,11 @@
 <mapper namespace="com.cyt.music.impl.mapper.user.UserInfoMapper" >
   <resultMap id="BaseResultMap" type="com.cyt.music.interfaces.pojo.user.UserInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="userstatus" property="userstatus" jdbcType="VARCHAR" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="userStatus" property="userstatus" jdbcType="VARCHAR" />
+    <result column="roleId" property="roleid" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
   </resultMap>
-  
-  <resultMap id="demoTestMap" type="com.cyt.music.interfaces.pojo.user.UserInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="userstatus" property="userstatus" jdbcType="VARCHAR" />
-  </resultMap>
-  
-  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -73,9 +67,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, username, userstatus
+    id, userName, userStatus, roleId, password
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.cyt.music.interfaces.pojo.user.UserInfoExample" >
     select
     <if test="distinct" >
       distinct
@@ -99,17 +93,17 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" >
+  <delete id="deleteByExample" parameterType="com.cyt.music.interfaces.pojo.user.UserInfoExample" >
     delete from user_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" >
-    insert into user_info (id, username, userstatus
-      )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userstatus,jdbcType=VARCHAR}
-      )
+    insert into user_info (id, userName, userStatus, 
+      roleId, password)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{userstatus,jdbcType=VARCHAR}, 
+      #{roleid,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" >
     insert into user_info
@@ -118,10 +112,16 @@
         id,
       </if>
       <if test="username != null" >
-        username,
+        userName,
       </if>
       <if test="userstatus != null" >
-        userstatus,
+        userStatus,
+      </if>
+      <if test="roleid != null" >
+        roleId,
+      </if>
+      <if test="password != null" >
+        password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -134,9 +134,15 @@
       <if test="userstatus != null" >
         #{userstatus,jdbcType=VARCHAR},
       </if>
+      <if test="roleid != null" >
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.cyt.music.interfaces.pojo.user.UserInfoExample" resultType="java.lang.Integer" >
     select count(*) from user_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -149,10 +155,16 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.username != null" >
-        username = #{record.username,jdbcType=VARCHAR},
+        userName = #{record.username,jdbcType=VARCHAR},
       </if>
       <if test="record.userstatus != null" >
-        userstatus = #{record.userstatus,jdbcType=VARCHAR},
+        userStatus = #{record.userstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.roleid != null" >
+        roleId = #{record.roleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -162,8 +174,10 @@
   <update id="updateByExample" parameterType="map" >
     update user_info
     set id = #{record.id,jdbcType=INTEGER},
-      username = #{record.username,jdbcType=VARCHAR},
-      userstatus = #{record.userstatus,jdbcType=VARCHAR}
+      userName = #{record.username,jdbcType=VARCHAR},
+      userStatus = #{record.userstatus,jdbcType=VARCHAR},
+      roleId = #{record.roleid,jdbcType=INTEGER},
+      password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -172,29 +186,26 @@
     update user_info
     <set >
       <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
+        userName = #{username,jdbcType=VARCHAR},
       </if>
       <if test="userstatus != null" >
-        userstatus = #{userstatus,jdbcType=VARCHAR},
+        userStatus = #{userstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="roleid != null" >
+        roleId = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" >
     update user_info
-    set username = #{username,jdbcType=VARCHAR},
-      userstatus = #{userstatus,jdbcType=VARCHAR}
+    set userName = #{username,jdbcType=VARCHAR},
+      userStatus = #{userstatus,jdbcType=VARCHAR},
+      roleId = #{roleid,jdbcType=INTEGER},
+      password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="demoTestQuery" parameterType="com.cyt.music.interfaces.pojo.user.UserInfo" resultType="com.cyt.music.interfaces.pojo.user.UserInfo">
-  		select * from user_info t
-		<where>
-   			<if test="username!=null and username!=''">
-   				t.username LIKE '%${username}%'   				
-   			</if>
-  		</where>
-  		<!-- 分页尾部 -->
-		<!-- <include refid="page_end" /> -->
-		<include refid="com.cyt.music.impl.mapper.sys.CommonSqlMapper.page_end" />	
-  </select>
 </mapper>

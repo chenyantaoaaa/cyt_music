@@ -34,7 +34,7 @@ public class CommonLogic {
 	public Long[] getNowTime() throws BizException{
 		Date now = sysConfigCustomMapper.queryMysqlDate();
 		Long nowLong = DateUtil.getLongDateTime(now);
-		return new Long[] { nowLong / 1000000, nowLong % 1000000};
+		return new Long[]{nowLong / 1000000, nowLong % 1000000};
 	}
 	
 	/**
@@ -62,13 +62,16 @@ public class CommonLogic {
 
 		
 		if(strA!=null){
-			String Overview=strA[0];
-			String details=strA[1];
-			details=details.replaceAll("；", "：");
-			String temperature=details.split("：")[2];
-			String wind=details.split("：")[4];
-			
-			
+			String Overview = strA[0];
+			String temperature = "";
+			String wind = "";
+			if(strA[1]!=null) {
+				String details = strA[1];
+				details = details.replaceAll("；", "：");
+				temperature = details.split("：")[2];
+				wind = details.split("：")[4];
+			}
+
 			weatherInfo.setOverview(Overview);
 			weatherInfo.setTemperature(temperature);
 			weatherInfo.setWind(wind);

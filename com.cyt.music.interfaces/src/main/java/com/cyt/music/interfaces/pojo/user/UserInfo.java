@@ -1,25 +1,17 @@
 package com.cyt.music.interfaces.pojo.user;
 
-import com.cyt.music.interfaces.pojo.common.PageInfo;
-
 public class UserInfo {
     private Integer id;
 
     private String username;
 
     private String userstatus;
-    
-    private PageInfo pageInfo;
 
-    public PageInfo getPageInfo() {
-		return pageInfo;
-	}
+    private Integer roleid;
 
-	public void setPageInfo(PageInfo pageInfo) {
-		this.pageInfo = pageInfo;
-	}
+    private String password;
 
-	public Integer getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -35,17 +27,27 @@ public class UserInfo {
         this.username = username == null ? null : username.trim();
     }
 
-    @Override
-	public String toString() {
-		return "UserInfo [id=" + id + ", username=" + username
-				+ ", userstatus=" + userstatus + "]";
-	}
-
-	public String getUserstatus() {
+    public String getUserstatus() {
         return userstatus;
     }
 
     public void setUserstatus(String userstatus) {
         this.userstatus = userstatus == null ? null : userstatus.trim();
+    }
+
+    public Integer getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(Integer roleid) {
+        this.roleid = roleid;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 }

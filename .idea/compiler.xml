@@ -22,18 +22,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="com.cfae.ukey.cert" />
         <module name="com.cyt.music.common" />
         <module name="com.cyt.music.impl" />
         <module name="com.cyt.music.interfaces" />
         <module name="com.cyt.music.webapp" />
+        <module name="com.cyt.shiro" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="com.cfae.ukey" target="1.5" />
+      <module name="com.cfae.ukey.cert" target="1.5" />
       <module name="com.cyt.music" target="1.7" />
       <module name="com.cyt.music.common" target="1.7" />
       <module name="com.cyt.music.impl" target="1.7" />
       <module name="com.cyt.music.interfaces" target="1.7" />
       <module name="com.cyt.music.webapp" target="1.7" />
+      <module name="com.cyt.shiro" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
